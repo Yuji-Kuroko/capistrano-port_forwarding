@@ -16,7 +16,16 @@ gem 'capistrano-port_forwarding', github: 'Yuji-Kuroko/capistrano-port_forwardin
 ### Capfile
 
 ```ruby
-require "capistrano/port_forwarding"
+# capistrano 3.7未満
+require 'capistrano/deploy'
+require 'capistrano/git'
+require 'capistrano/port_forwarding'
+
+# capistrano 3.7以上
+require 'capistrano/deploy'
+require 'capistrano/scm/git'
+install_plugin Capistrano::SCM::Git
+require 'capistrano/port_forwarding'
 ```
 
 ## 設定パラメータ
